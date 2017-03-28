@@ -1,23 +1,23 @@
 {
-    "name": "semotus",
-    "subdomain": "semotus",
-    "version": "0.0.92",
-    "engines": {
-        "node": "0.10.x"
-    },
-    "scripts": {
-        "start": "app.js"
-    },
-    "dependencies": {
-        "q": "0.9.x",
-        "amorphic": "2.0.*",
-        "amorphic-userman": "x",
-        "amorphic-mandrill": "x"
-    },
-    "devDependencies": {
-        "chai": "1.x",
-        "mocha": "1.x"
-    },
-    "bundledDependencies": [
-    ]
+  "name": "semotus",
+  "subdomain": "semotus",
+  "version": "0.0.92",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "app.js"
+  },
+  "dependencies": {
+    "amorphic": "2.0.*",
+    "amorphic-mandrill": "x",
+    "amorphic-userman": "x",
+    "q": "0.9.x",
+    "vue": "^2.2.6"
+  },
+  "devDependencies": {
+    "chai": "1.x",
+    "mocha": "1.x"
+  },
+  "bundledDependencies": []
 }

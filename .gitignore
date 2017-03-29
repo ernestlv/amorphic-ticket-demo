@@ -2,3 +2,6 @@
 node_modules
 apps/**/*.js
 apps/**/*.map
+!apps/ticket/public/js/lib/**/*.js
+!apps/ticket/public/js/router.js
+!apps/ticket/public/test/all.js

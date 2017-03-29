@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://bindster.com" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en">
 
 <head>
+    <base href="/">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="Amorphic sample application">
@@ -10,8 +11,8 @@
     <title> Amorphic Ticket Demo </title>
 
     <!-- First include your library files -->
-    <script src="modules/q/q.js?ver=0q.js?ver=0"></script>
-    <script src="js/lib/underscore.js?ver=0"></script>
+    <!--script src="modules/q/q.js?ver=0"></script-->
+    <!--script src="js/lib/underscore.js?ver=0"></script-->
 
     <!-- Bootstrap -->
     <!--[if lt IE 9]>
@@ -23,8 +24,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Then include the amorphic files -->
-    <script src="supertype/index.js?ver=0"></script>
-    <script src="semotus/index.js?ver=0"></script>
+    <!--script src="supertype/index.js?ver=0"><--/script-->
+    <!--script src="semotus/index.js?ver=0"><--/script-->
+    <!--<script src="js/bundle.js"></script>-->
+    <script src="js/bundle.js"></script>
     <script src="amorphic/client.js?ver=0"></script>
     <script src="modules/amorphic-bindster/index.js?ver=1"></script>
     <script src="modules/amorphic-bindster/router.js?ver=0"></script>
@@ -36,48 +39,44 @@
 
 </head>
 
-<body style="visibility:hidden;">
-
-    <!--#include virtual="inc/mappers.html" -->
-    <!--#include virtual="inc/messages.html" -->
-
-    <b:include url="menu.html"></b:include>
-
-    <div class="container" id="container" style="margin-top: 50px">
-
-        <!-- HOME PAGE GOES HERE WHERE SEARCH ENGINES WILL SEE IT -->
-
-        <b:if test="!file">
-
-            <div b:showif="loggedIn" class="page-header">
-
-                <h1>Hey <span b:bind="loggedInPerson.firstName"></span></h1>
-                <p>
-                    Welcome to the Amorphic Ticket Demo
-                </p>
-
-            </div>
-
-            <div b:showif="!loggedIn" class="page-header">
-                <h1>Welcome to the Amorphic Ticket Demo</h1>
-                <p>
-                    Amorphic is an open source project on
-                    <a href="https://github.com/selsamman/amorphic" target="_blank">github</a>
-                </p>
-            </div>
-
-            <div style="text-align: center;color: red;margin-top: 20px" b:bind="error"></div>
-
-        </b:if>
-
-        <b:if test="file">
-            <b:include url="{file}"></b:include>
-        </b:if>
-
-    </div>
-
+<body>
+    <menu></menu>
     <!--#include virtual="inc/mocha.html" -->
     <script src="modules/amorphic-bindster/bindster-amorphic.js"></script>
 
+    <!--Angular stuff-->
+    <!-- 1. Load libraries -->
+    <!-- IE required polyfill -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/@angular/core/bundles/core.umd.js"></script>
+    <script src="node_modules/@angular/common/bundles/common.umd.js"></script>
+    <script src="node_modules/@angular/compiler/bundles/compiler.umd.js"></script>
+    <script src="node_modules/@angular/forms/bundles/forms.umd.js"></script>
+    <script src="node_modules/@angular/platform-browser/bundles/platform-browser.umd.js"></script>
+    <script src="node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"></script>
+
+    <!-- 2. Load our 'modules' -->
+    <!--<script src="vue/amorphic.service.js"></script>-->
+    <!--<script src="vue/menu.component.js"></script>-->
+    <!--<script src="vue/projects.component.js"></script>-->
+    <!--<script src="vue/window.service.js"></script>-->
+    <!--<script src="vue/app.module.js"></script>-->
+    <!--<script src="vue/people.component.js"></script>-->
+    <!--<script src="vue/ticket.component.js"></script>-->
+    <!--<script src="vue/project.component.js"></script>-->
+    <!--<script src="vue/tickets.component.js"></script>-->
+    <!--<script src="vue/client.module.js"></script>-->
+
+    <!--End Angular stuff-->
+    <script src="js/start.js"></script>
+    <!--<script src="bundle/vendor.js"></script>-->
+    <!--<script src="bundle/start.js"></script>-->
+    <!--<script>-->
+        <!--platformBrowserDynamic().bootstrapModule(AppModule);-->
+    <!--</script>-->
 </body>
 </html>

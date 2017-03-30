@@ -38,7 +38,7 @@ export class Controller extends BaseController {
     ticket: Ticket = null;  // unlike with supertype properties are not 'ownProperty'
 
     @property({autoFetch: true, type: Ticket})
-    tickets: Array<Ticket>;
+    tickets: Array<Ticket> = [];
 
     @remote()
     ticketsFetch () {

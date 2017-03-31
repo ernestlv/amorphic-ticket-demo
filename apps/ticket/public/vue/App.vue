@@ -8,12 +8,11 @@
 <script lang="ts">
   import * as Vue from 'vue';
   import Component from 'vue-class-component';
-  //      import ProductList from './components/ProductList'
   import {Controller} from '../js/controller';
   import HomeMenu from './components/HomeMenu';
-  import {AmorphicService} from './amorphic.service';
-  import {WindowService} from './window.service';
-  import {amorphicService, windowService} from './constants';
+  import {AmorphicService} from './common/amorphic.service';
+  import {WindowService} from './common/window.service';
+  import {amorphicService, windowService} from './common/constants';
 
   let windowServiceInstance = new WindowService();
   let amorphicServiceInstance = new AmorphicService(windowServiceInstance);

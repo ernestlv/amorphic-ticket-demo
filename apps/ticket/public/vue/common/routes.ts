@@ -1,5 +1,5 @@
-import HomeMenu from './components/HomeMenu';
-import Login from './components/Login';
+import HomeMenu from '../components/HomeMenu';
+import Login from '../components/Login';
 
 const routes = [
     {path: '/', component: HomeMenu},

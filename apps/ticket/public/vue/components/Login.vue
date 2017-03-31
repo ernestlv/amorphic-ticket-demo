@@ -42,8 +42,8 @@
   import Component from 'vue-class-component';
   import {Inject} from 'vue-property-decorator';
   import {Controller} from '../../js/controller';
-  import {amorphicService} from '../constants';
-  import {AmorphicService} from '../amorphic.service';
+  import {amorphicService} from '../common/constants';
+  import {AmorphicService} from '../common/amorphic.service';
 
   // The @Component decorator indicates the class is a Vue component
   @Component({

@@ -1,59 +1,71 @@
 <template>
-    <div>
-        <button @click="onClick">Hello!</button>
-        <span v-if="isNotLoggedIn()">Not Log in</span>
+  <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <ul class="nav navbar-nav" v-if="!controller.loggedIn">
+        <li>
+          <router-link to="/home">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/login">Login</router-link>
+        </li>
+        <!--<li>-->
+        <!--<router-link to="/registration">Register</router-link>-->
+        <!--</li>-->
+      </ul>
+      <ul class="nav navbar-nav" v-if="controller.loggedIn">
+        <li>
+          <router-link to="/home">Home</router-link>
+        </li>
+        <!--<li>-->
+        <!--<router-link to="/tickets">Tickets</router-link>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<router-link to="/projects">Projects</router-link>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<router-link to="/people">People</router-link>-->
+        <!--</li>-->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"
+             data-toggle="dropdown">Hello <span>{{controller.loggedInPerson.firstName}}</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a @click="logout()">Logout</a></li>
+            <!--<li>-->
+            <!--<router-link to="/change_email">Change email</router-link>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<router-link to="/change_password">Change Password</router-link>-->
+            <!--</li>-->
+            <li v-show="controller.isAdmin()"><a @click="deleteAll()">Clear Database</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="container" id="container" style="margin-top: 50px">
+
+      <!-- component matched by the route will render here -->
     </div>
-    <!--<div>-->
-    <!--<table class="table table-hover">-->
-    <!--<thead>-->
-    <!--<tr>-->
-    <!--<th>Product Id</th>-->
-    <!--<th>Name</th>-->
-    <!--<th>Description</th>-->
-    <!--<th>Price</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-    <!--<tbody>-->
-    <!--<tr v-for="product in products" track-by="id">-->
-    <!--<td>{{product.id}}</td>-->
-    <!--<td>{{product.name}}</td>-->
-    <!--<td>{{product.description}}</td>-->
-    <!--<td>{{product.price}}</td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-    <!--</table>-->
-    <!--</div>-->
+  </div>
 </template>
 
 <script lang="ts">
-    import * as Vue from 'vue';
-    import Component from 'vue-class-component';
-    import {Inject} from 'vue-property-decorator';
-    import {Controller} from '../../js/controller';
-    import {amorphicService, windowService} from '../constants';
-    import {AmorphicService} from '../amorphic.service';
-    import {WindowService} from '../window.service';
+  import * as Vue from 'vue';
+  import Component from 'vue-class-component';
+  import {Inject} from 'vue-property-decorator';
+  import {Controller} from '../../js/controller';
+  import {amorphicService} from '../constants';
+  import {AmorphicService} from '../amorphic.service';
 
-    // The @Component decorator indicates the class is a Vue component
-    @Component({})
-    export default class HomeMenu extends Vue {
-        // Initial data can be declared as instance properties
-        message: string = 'Hello!'
-        controller: Controller
-        @Inject(amorphicService) amorphicService: AmorphicService
+  // The @Component decorator indicates the class is a Vue component
+  @Component({})
+  export default class HomeMenu extends Vue {
+    // Initial data can be declared as instance properties
+    controller: Controller;
+    @Inject(amorphicService) amorphicService: AmorphicService;
 //        controller: Controller = window.controller
-        // Component methods can be declared as instance methods
-        onClick(): void {
-            window.alert(this.message)
-        }
-
-        isNotLoggedIn(): boolean {
-//            return window.controller && window.controller.isLoggedIn()
-            return !this.controller.isLoggedIn();
-        }
-
-        created(){
-            this.controller = this.amorphicService.controller;
-        }
+    // Component methods can be declared as instance methods
+    created() {
+      this.controller = this.amorphicService.controller;
     }
+  }
 </script>

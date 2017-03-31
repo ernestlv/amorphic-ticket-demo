@@ -1,18 +1,20 @@
 import * as Vue from 'vue';
-// import injector from 'vue-inject';
+import VueRouter from 'vue-router';
+import * as VeeValidate from 'vee-validate';
+import routes from './routes';
 import App from './App';
 
 // import './styles/style.scss'
-
 // import store from './store'
-// Vue.use(injector);
+const router = new VueRouter({routes: routes});
+
+Vue.use(VueRouter);
+Vue.use(VeeValidate);
 
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
-    // data: {
-    //     controller: injector.get('amorphicService').controller
-    // },
+    router,
     // // store,
     render: h => h(App)
 });

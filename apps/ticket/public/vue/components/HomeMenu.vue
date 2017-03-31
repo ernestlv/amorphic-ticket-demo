@@ -8,9 +8,9 @@
         <li>
           <router-link to="/login">Login</router-link>
         </li>
-        <!--<li>-->
-        <!--<router-link to="/registration">Register</router-link>-->
-        <!--</li>-->
+        <li>
+          <router-link to="/registration">Registration</router-link>
+        </li>
       </ul>
       <ul class="nav navbar-nav" v-if="controller.loggedIn">
         <li>

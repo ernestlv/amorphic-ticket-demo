@@ -16,9 +16,9 @@
         <li>
           <router-link to="/home">Home</router-link>
         </li>
-        <!--<li>-->
-        <!--<router-link to="/tickets">Tickets</router-link>-->
-        <!--</li>-->
+        <li>
+          <router-link to="/tickets">Tickets</router-link>
+        </li>
         <!--<li>-->
         <!--<router-link to="/projects">Projects</router-link>-->
         <!--</li>-->
@@ -27,7 +27,8 @@
         <!--</li>-->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle"
-             data-toggle="dropdown">Hello <span>{{controller.loggedInPerson.firstName}}</span><b class="caret"></b></a>
+             data-toggle="dropdown">Hello <span>{{controller.loggedInPerson.firstName}}</span><b class="caret"></b>
+          </a>
           <ul class="dropdown-menu">
             <li><a @click="logout()">Logout</a></li>
             <!--<li>-->
@@ -66,6 +67,11 @@
     // Component methods can be declared as instance methods
     created() {
       this.controller = this.amorphicService.controller;
+    }
+
+    logout(): void {
+      this.controller.publicLogout('');
+      this.controller.password = '';
     }
   }
 </script>

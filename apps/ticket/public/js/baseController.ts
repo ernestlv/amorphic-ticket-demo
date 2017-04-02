@@ -6,7 +6,7 @@ declare var ActiveXObject : any;
 export class BaseController extends AuthenticatingController {
 
 	getPrincipal () : AuthenticatedPrincipal {
-		return this.loggedInPerson;
+		return this.loggedInPerson || new Person('','','','');
 	}
 	setPrincipal(principal) {
 		this.loggedInPerson = principal

@@ -85,7 +85,7 @@
           </span>
         </div>
       </div>
-      <button @click="register()" type="submit" class="btn btn-primary btn-lg"
+      <button @click="register()" class="btn btn-primary btn-lg"
               :disabled="controller.email
               && controller.firstName
               && controller.lastName
@@ -125,9 +125,10 @@
           .then(function (result) {
             //this.router.navigate(['/tickets']);
             console.log('Register **********');
+            this.$router.push('/');
           })
-          .catch(function(e){
-              return console.log('Register *****EEEEEEE*******');
+          .catch(function (e) {
+            return console.log('Register *****EEEEEEE*******');
           });
     }
   }

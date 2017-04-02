@@ -6,14 +6,16 @@
         <!--Text field-->
         <label for="email" class="col-md-2 control-label">Email</label>
         <div class="col-md-4">
-          <input v-model="email"
+          <input v-model="controller.email"
                  v-validate data-vv-rules="required|email"
                  type="text"
                  class="form-control"
                  name="email"
-                 placeholder="email"
+                 placeholder="Email"
                  focus="1"/>
-          <span class="text-danger" v-if="errors.has('email')"><br/><span>{{errors.first('email')}}</span></span>
+          <span class="text-danger" v-if="errors.has('email')"><br/>
+            <span>{{errors.first('email')}}</span>
+          </span>
         </div>
       </div>
 
@@ -21,17 +23,20 @@
         <!--Text field-->
         <label for="password" class="col-md-2 control-label">password</label>
         <div class="col-md-4">
-          <input v-model="password"
+          <input v-model="controller.password"
                  v-validate data-vv-rules="required"
                  type="password"
                  class="form-control"
-                 name="password" placeholder="password"
+                 name="password"
+                 placeholder="Password"
                  focus="2"/>
-          <span class="text-danger" v-if="errors.has('password')"><br/><span>{{errors.first('password')}}</span></span>
+          <span class="text-danger" v-if="errors.has('password')"><br/>
+            <span>{{errors.first('password')}}</span>
+          </span>
         </div>
       </div>
-      <button @click="login()" type="submit" class="btn btn-primary btn-lg"
-              :disabled="email && password && errors.any()">Login</button>
+      <button @click="login()" class="btn btn-primary btn-lg"
+              :disabled="controller.email && controller.password && errors.any()">Login</button>
     </form>
     <!--<span style="color:red" v-if="controller.isError('')"><br/><span>{{controller.error}}</span></span>-->
   </div>
@@ -51,20 +56,22 @@
   })
   export default class Login extends Vue {
     // Initial data can be declared as instance properties
-    email: string = '';
-    password: string = '';
     controller: Controller;
     @Inject(amorphicService) amorphicService: AmorphicService;
-//        controller: Controller = window.controller
     // Component methods can be declared as instance methods
     created() {
       this.controller = this.amorphicService.controller;
     }
 
     login(): void {
-      this.controller.publicLogin()
-          .then(function () {
+      this.controller.publicLogin('/')
+          .then(function (result) {
             //this.router.navigate(['/tickets']);
+            console.log('Login ********** OK ');
+//            console.log(JSON.stringify(result));
+          })
+          .catch(function(e){
+            return console.log('Login *****EEEEEEE*******');
           });
     }
   }

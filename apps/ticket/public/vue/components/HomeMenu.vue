@@ -3,7 +3,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <ul class="nav navbar-nav" v-if="!controller.loggedIn">
         <li>
-          <router-link to="/home">Home</router-link>
+          <router-link to="#">Home</router-link>
         </li>
         <li>
           <router-link to="/login">Login</router-link>
@@ -14,7 +14,7 @@
       </ul>
       <ul class="nav navbar-nav" v-if="controller.loggedIn">
         <li>
-          <router-link to="/home">Home</router-link>
+          <router-link to="#">Home</router-link>
         </li>
         <li>
           <router-link to="/tickets">Tickets</router-link>
@@ -42,10 +42,10 @@
         </li>
       </ul>
     </nav>
-    <div class="container" id="container" style="margin-top: 50px">
 
+    <!--<div class="container" id="container" style="margin-top: 50px">-->
       <!-- component matched by the route will render here -->
-    </div>
+    <!--</div>-->
   </div>
 </template>
 

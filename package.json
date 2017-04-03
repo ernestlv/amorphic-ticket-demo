@@ -38,7 +38,7 @@
     "vue-inject": "^1.0.0",
     "vue-property-decorator": "^4.0.0",
     "vue-router": "^2.3.1",
-    "vuex": "^2.0.0",
+    "vuex": "^2.2.1",
     "zone.js": "^0.7.4"
   },
   "devDependencies": {

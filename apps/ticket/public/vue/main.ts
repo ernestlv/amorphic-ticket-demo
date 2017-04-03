@@ -2,11 +2,14 @@ import * as Vue from 'vue';
 import VueRouter from 'vue-router';
 import * as VeeValidate from 'vee-validate';
 import routes from './common/routes';
+import store from './common/store';
 import App from './App';
 
 // import './styles/style.scss'
-// import store from './store'
-const router = new VueRouter({routes: routes});
+const router = new VueRouter({
+    // mode: 'history',
+    routes: routes
+});
 
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
@@ -15,6 +18,6 @@ Vue.use(VeeValidate);
 new Vue({
     el: '#app',
     router,
-    // // store,
+    store,
     render: h => h(App)
 });

@@ -20,7 +20,7 @@ export class TicketItem extends Created(Remoteable(Persistable(Supertype))) {
 
     // Only called on the server
     constructor (ticket: Ticket, creator? : Person) {
-        super()
+        super();
         this.ticket = ticket;
         this.creator = creator;
         this.created = new Date();

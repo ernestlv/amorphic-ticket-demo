@@ -98,6 +98,14 @@ export class Controller extends BaseController {
         this.route.private.ticket();
     };
 
+    createNewTicket() {
+        // let tickets = this.tickets;
+        let ticket = new Ticket();
+        // tickets.splice(0, 0, ticket);
+        this.ticket = ticket;
+        // this.tickets = tickets;
+    }
+
     @remote()
     addComment () {
         return this.ticket.addComment(this.comment, this.loggedInPerson).persistSave()
@@ -118,6 +126,23 @@ export class Controller extends BaseController {
                     this.error = null;
 
             }.bind(this));
+    };
+
+    @remote({validate: function () {return this.validate()}})
+    saveTicketServer() {
+        let ticket = this.ticket;
+        let tickets = this.tickets;
+        if (this.ticket) {
+            if (_.indexOf(tickets, ticket) < 0) {
+                tickets.splice(0, 0, ticket);
+            }
+            this.ticket = ticket;
+            this.tickets = tickets;
+            return this.ticket.save().then(function () {
+                this.status = "Ticket Saved at " + this.getDisplayTime();
+                this.error = null;
+            }.bind(this));
+        }
     };
 
     // Ask the ticket to remove itself and update our list of tickets
@@ -232,9 +257,9 @@ export class Controller extends BaseController {
     clientInit ()
     {
         BaseController.prototype.clientInit.call(this);
-
-        this.router = AmorphicRouter;
-        this.route = AmorphicRouter.route(this, ticketRoutes);
+        //
+        // this.router = AmorphicRouter;
+        // this.route = AmorphicRouter.route(this, ticketRoutes);
     }
 
     login ()

@@ -27,6 +27,28 @@ $ node_modules/typescript/bin/tsc
 $ gulp webpack
 $ node app.js
 ```
-## License
+## Vue
+`
+$ npm i
+`
 
+remove some lines in *node_modules/amorphic-bindster/bindster-amorphic.js* as following:
+```
+if (!bindster) {
+    // bindster = new Bindster(controller, null, controller, null, true);
+    // bindster.alert = function (msg) {
+    //     //controller.serverLog(msg);
+    //     alert(msg);
+    // }
+    if (typeof(controller.clientInit) == "function")
+        controller.clientInit(sessionExpiration);
+    // bindster.start();
+}
+```
+```
+$ mongod
+$ node_modules/typescript/bin/tsc #or tsc if installed globally
+$ npm run dev
+```
+## License
 Amorphic is licensed under the MIT license

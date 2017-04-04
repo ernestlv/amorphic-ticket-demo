@@ -64,13 +64,12 @@
     }
 
     login(): void {
-        debugger;
       this.controller.publicLogin()
           .then(function (result) {
             //this.router.navigate(['/tickets']);
             console.log('Login ********** OK ');
 //            console.log(JSON.stringify(result));
-            this.$router.push('/tickets');
+//            this.$router.push('/tickets');
           })
           .catch(function (e) {
             return console.log('Login *****EEEEEEE*******');

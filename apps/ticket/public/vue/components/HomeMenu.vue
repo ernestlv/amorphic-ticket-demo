@@ -70,7 +70,7 @@
     }
 
     logout(): void {
-      this.controller.publicLogout('');
+      this.controller.publicLogout();
       this.controller.password = '';
       this.$router.push('/');
     }

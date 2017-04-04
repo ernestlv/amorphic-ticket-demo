@@ -101,8 +101,9 @@ export class Controller extends BaseController {
     createNewTicket() {
         // let tickets = this.tickets;
         let ticket = new Ticket();
+        ticket.creator = this.loggedInPerson;
         // tickets.splice(0, 0, ticket);
-        this.ticket = ticket;
+        return this.ticket = ticket;
         // this.tickets = tickets;
     }
 

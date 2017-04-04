@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="ticket in controller.tickets">
+        <tr v-for="ticket in tickets">
           <td><a @click="showTicket(ticket)">{{ticket.title || 'unnamed'}}</a></td>
           <td>{{ticket.created}}</td>
           <td>{{ticket.creator ? ticket.creator.getFullName() : 'unknown'}}</td>
@@ -46,6 +46,7 @@
   export default class TicketsComponent extends Vue {
     // Initial data can be declared as instance properties
     controller: Controller;
+    tickets: Array<Ticket> = [];
     @Inject(amorphicService) amorphicService: AmorphicService;
 //        controller: Controller = window.controller
     // Component methods can be declared as instance methods
@@ -53,9 +54,20 @@
       this.controller = this.amorphicService.controller;
     }
 
+    mounted() {
+      this.fetchTickets();
+    }
+
     fetchTickets(): void {
       console.log('Fetch Tickets =========>');
-//      this.controller.deleteTicket();
+      this.controller.ticketsFetch()
+          .then(function () {
+            this.tickets = this.controller.tickets;
+            console.log('Fetch Tickets ********** OK ');
+          }.bind(this))
+          .catch(function (e) {
+            return console.log('Fetch Tickets *****EEEEEEE*******');
+          });
     }
 
     showTicket(ticket): void {
@@ -66,7 +78,7 @@
 
     addTicket(): void {
       console.log('Add Ticket =========>');
-      this.controller.createNewTicket();
+//      this.controller.createNewTicket();
       this.$router.push('/ticket');
     }
 

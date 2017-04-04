@@ -37,12 +37,18 @@ remove some lines in *node_modules/amorphic-bindster/bindster-amorphic.js* as fo
 if (!bindster) {
     // bindster = new Bindster(controller, null, controller, null, true);
     // bindster.alert = function (msg) {
-    //     //controller.serverLog(msg);
-    //     alert(msg);
+        //controller.serverLog(msg);
+        // alert(msg);
     // }
     if (typeof(controller.clientInit) == "function")
         controller.clientInit(sessionExpiration);
     // bindster.start();
+} else {
+    // bindster.setModel(controller)
+    // bindster.setController(controller);
+    if (typeof(controller.clientInit) == "function")
+        controller.clientInit(sessionExpiration);
+    controller.refresh(1);
 }
 ```
 ```

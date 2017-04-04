@@ -17,7 +17,7 @@
         <!--Text field-->
         <label for="title" class="col-md-2 control-label">Title</label>
         <div class="col-md-10">
-          <input v-model="controller.ticket.title"
+          <input v-model="ticket.title"
                  type="text"
                  class="form-control"
                  name="title"
@@ -33,7 +33,7 @@
         <!--Memo field-->
         <label for="description" class="col-md-2 control-label">Description</label>
         <div class="col-md-10">
-          <input v-model="controller.ticket.description"
+          <input v-model="ticket.description"
                  type="text"
                  class="form-control"
                  name="description"
@@ -45,11 +45,11 @@
         </div>
       </div>
 
-      <div class="form-group" v-if="controller.ticket.creator">
+      <div class="form-group" v-if="ticket.creator">
         <!--Static fields-->
         <label for="created" class="col-md-2 control-label">Created</label>
         <div class="col-md-4">
-          <p type="text" class="form-control-static" id="created">{{controller.ticket.created}}</p>
+          <p type="text" class="form-control-static" id="created">{{ticket.created}}</p>
         </div>
 
         <!--<label for="lastName" class="col-md-2 control-label">Last Name</label>-->
@@ -144,11 +144,13 @@
   export default class TicketComponent extends Vue {
     // Initial data can be declared as instance properties
     controller: Controller;
+    ticket: Ticket;
     @Inject(amorphicService) amorphicService: AmorphicService;
 //        controller: Controller = window.controller
     // Component methods can be declared as instance methods
     created() {
       this.controller = this.amorphicService.controller;
+      this.ticket = this.controller.ticket || this.controller.createNewTicket();
 //      var ticket = this.controller.ticket;
 //      var tickets = this.controller.tickets;
 //      if (_.indexOf(tickets, ticket) < 0) {

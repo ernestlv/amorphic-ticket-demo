@@ -9,8 +9,8 @@ import {BaseController} from './baseController';
 
 var forceImport = TicketItemComment;
 
-declare var AmorphicRouter : any;
-declare var ticketRoutes : any;
+// declare var AmorphicRouter : any;
+// declare var ticketRoutes : any;
 
 @supertypeClass
 export class Controller extends BaseController {

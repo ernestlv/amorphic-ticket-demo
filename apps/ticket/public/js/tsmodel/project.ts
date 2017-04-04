@@ -47,7 +47,7 @@ export class Project extends Remoteable(Persistable(Supertype)) {
 			this.created = new Date();
 		}
 		*/
-		this.creator = authenticatedPerson;
+		this.creator = authenticatedPerson || this.creator;
 		return this.persistSave();
 	}
 

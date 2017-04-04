@@ -86,12 +86,12 @@
         </div>
       </div>
       <button @click="register()" class="btn btn-primary btn-lg"
-              :disabled="controller.email
-              && controller.firstName
-              && controller.lastName
-              && controller.newPassword
-              && controller.confirmPassword
-              && errors.any()">Register
+              :disabled="!controller.email
+              || !controller.firstName
+              || !controller.lastName
+              || !controller.newPassword
+              || !controller.confirmPassword
+              || errors.any()">Register
       </button>
     </form>
     <!--<span style="color:red" v-if="controller.isError('')"><br/><span>{{controller.error}}</span></span>-->

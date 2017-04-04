@@ -240,10 +240,16 @@ export class Controller extends BaseController {
         this.route.private.project();
     }
 
+    createNewProject() {
+        let project = new Project('','');
+        // project.creator = this.loggedInPerson;
+        project.created = new Date();
+        return this.project = project;
+    }
+
     @remote()
     saveProject ()  {
         if (this.project)
-
             return this.project.save(this.person).then(function()
             {
                 this.status = "Project saved at " + this.getDisplayTime();
@@ -252,6 +258,17 @@ export class Controller extends BaseController {
             }.bind(this));
     };
 
+    @remote()
+    saveProjectServer(owner) {
+        if (this.project)
+            this.project.owner = owner;
+            return this.project.save().then(function () {
+                this.status = "Project saved at " + this.getDisplayTime();
+                this.error = "";
+            }.bind(this));
+    };
+
+    @remote()
     deleteProject ()
     {
         if (this.project)
@@ -266,6 +283,21 @@ export class Controller extends BaseController {
 
             }.bind(this));
     };
+
+    @remote()
+    removeProject(project) {
+        if (project){
+            return project.remove()
+                .then(function(){
+                    let ix = _.indexOf(this.projects, project);
+                    if (ix >= 0){
+                        this.projects.splice(ix, 1);
+                    }
+                }.bind(this));
+        } else {
+            return Q();
+        }
+    }
         /*
          * -------  Housekeeping ----------------------------------------------------------------------
          */

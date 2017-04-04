@@ -19,9 +19,9 @@
         <li>
           <router-link to="/tickets">Tickets</router-link>
         </li>
-        <!--<li>-->
-        <!--<router-link to="/projects">Projects</router-link>-->
-        <!--</li>-->
+        <li>
+          <router-link to="/projects">Projects</router-link>
+        </li>
         <!--<li>-->
         <!--<router-link to="/people">People</router-link>-->
         <!--</li>-->

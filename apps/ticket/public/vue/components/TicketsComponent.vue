@@ -52,10 +52,10 @@
     // Component methods can be declared as instance methods
     created() {
       this.controller = this.amorphicService.controller;
+      this.fetchTickets();
     }
 
     mounted() {
-      this.fetchTickets();
     }
 
     fetchTickets(): void {

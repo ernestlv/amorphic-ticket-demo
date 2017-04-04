@@ -18,6 +18,7 @@
         <label for="title" class="col-md-2 control-label">Title</label>
         <div class="col-md-10">
           <input v-model="ticket.title"
+                 v-validate data-vv-rules="required"
                  type="text"
                  class="form-control"
                  name="title"
@@ -34,6 +35,7 @@
         <label for="description" class="col-md-2 control-label">Description</label>
         <div class="col-md-10">
           <input v-model="ticket.description"
+                 v-validate data-vv-rules="required"
                  type="text"
                  class="form-control"
                  name="description"
@@ -52,21 +54,20 @@
           <p type="text" class="form-control-static" id="created">{{ticket.created}}</p>
         </div>
 
-        <!--<label for="lastName" class="col-md-2 control-label">Last Name</label>-->
-        <!--<div class="col-md-4">-->
-        <!--<p type="text" class="form-control-static" id="lastName">{{controller.ticket.creator.getFullName()}}</p>-->
-        <!--</div>-->
+        <label for="lastName" class="col-md-2 control-label">Last Name</label>
+        <div class="col-md-4">
+          <p type="text" class="form-control-static" id="lastName">{{ticket.creator.getFullName()}}</p>
+        </div>
       </div>
 
       <!--<div class="form-group">-->
-      <!--&lt;!&ndash;Object select&ndash;&gt;-->
-      <!--<label class="col-md-2 control-label">{{ticket.project}}</label>-->
-      <!--<div class="col-md-4">-->
-      <!--<select class="form-control" id="power" required-->
-      <!--[(ngModel)]="ticket.project" (change)="if(!ticket.project){ticket.release=null}">-->
-      <!--<option *ngFor="let pr of projectsGet()" [value]="pr">{{pr}}</option>-->
-      <!--</select>-->
-      <!--</div>-->
+        <!--<label class="col-md-2 control-label">{{ticket.project}}</label>-->
+        <!--<div class="col-md-4">-->
+          <!--<select class="form-control" id="power" required-->
+                  <!--v-model="ticket.project" @change="if(!ticket.project){ticket.release=null}">-->
+            <!--<option v-for="pr in controller.projects" v-text="pr">{{pr}}</option>-->
+          <!--</select>-->
+        <!--</div>-->
       <!--</div>-->
 
     </form>
@@ -151,29 +152,7 @@
     created() {
       this.controller = this.amorphicService.controller;
       this.ticket = this.controller.ticket || this.controller.createNewTicket();
-//      var ticket = this.controller.ticket;
-//      var tickets = this.controller.tickets;
-//      if (_.indexOf(tickets, ticket) < 0) {
-//        tickets.splice(0, 0, ticket);
-//      }
-//      this.controller.ticket = ticket;
-//      this.controller.tickets = tickets;
     }
-
-//    showTicket(): void {
-//      console.log('Show Ticket =========>');
-//      this.$router.push('/ticket');
-//    }
-//
-//    addTicket(): void {
-//      console.log('Add Ticket =========>');
-//      this.controller.newTicket();
-//    }
-//
-//    deleteTicket(): void {
-//      console.log('Delete Ticket =========>');
-//      this.controller.deleteTicket();
-//    }
 
     saveTicket(): void {
       console.log('Save Ticket =========>');

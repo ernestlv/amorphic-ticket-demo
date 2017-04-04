@@ -36,7 +36,7 @@
         </div>
       </div>
       <button @click="login()" class="btn btn-primary btn-lg"
-              :disabled="controller.email && controller.password && errors.any()">Login</button>
+              :disabled="!controller.email || !controller.password || errors.any()">Login</button>
     </form>
     <!--<span style="color:red" v-if="controller.isError('')"><br/><span>{{controller.error}}</span></span>-->
   </div>

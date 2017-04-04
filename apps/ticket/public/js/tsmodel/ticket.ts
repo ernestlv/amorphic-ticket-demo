@@ -23,7 +23,7 @@ export class Ticket  extends Created(Remoteable(Persistable(Supertype))){
     constructor (title? : string, description? : string, projectName? : string, projectDescription? : string) {
         super();
         this.title = title || null;
-        this.created = new Date();
+        // this.created = new Date();
         this.description = description || null;
         if (projectName)
             this.project = new Project(projectName, projectDescription);
@@ -50,9 +50,9 @@ export class Ticket  extends Created(Remoteable(Persistable(Supertype))){
     };
 
     @remote({validate: function () {return this.validate()}})
-    save () {
-        if (!this.created)
-            this.created = new Date();
+    save (authenticatedPerson?) {
+        this.created = this.created || new Date();
+        this.creator = authenticatedPerson || this.creator;
 /*
      if (!this.creator)
      this.creator = this.getSecurityContext().principal;

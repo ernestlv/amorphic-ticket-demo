@@ -101,7 +101,7 @@ export class Controller extends BaseController {
     createNewTicket() {
         // let tickets = this.tickets;
         let ticket = new Ticket();
-        ticket.creator = this.loggedInPerson;
+        // ticket.creator = this.loggedInPerson;
         // tickets.splice(0, 0, ticket);
         return this.ticket = ticket;
         // this.tickets = tickets;
@@ -130,10 +130,11 @@ export class Controller extends BaseController {
     };
 
     @remote({validate: function () {return this.validate()}})
-    saveTicketServer() {
+    saveTicketServer(creator?) {
         let ticket = this.ticket;
         let tickets = this.tickets;
         if (this.ticket) {
+            this.ticket.creator = creator || this.loggedInPerson;
             if (_.indexOf(tickets, ticket) < 0) {
                 tickets.splice(0, 0, ticket);
             }
@@ -243,7 +244,7 @@ export class Controller extends BaseController {
     createNewProject() {
         let project = new Project('','');
         // project.creator = this.loggedInPerson;
-        project.created = new Date();
+        // project.created = new Date();
         return this.project = project;
     }
 
@@ -259,9 +260,10 @@ export class Controller extends BaseController {
     };
 
     @remote()
-    saveProjectServer(owner) {
+    saveProjectServer(owner, creator?) {
         if (this.project)
             this.project.owner = owner;
+            this.project.creator = creator || this.loggedInPerson;
             return this.project.save().then(function () {
                 this.status = "Project saved at " + this.getDisplayTime();
                 this.error = "";

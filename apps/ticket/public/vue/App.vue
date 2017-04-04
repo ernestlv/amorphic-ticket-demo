@@ -1,7 +1,7 @@
 <template>
   <div>
     <home-menu></home-menu><!--must be same as vue file name-->
-    <div class="container"  style="margin-top: 50px">
+    <div class="container">
       <router-view></router-view>
     </div>
   </div>

@@ -5,11 +5,6 @@
         <button @click="saveTicket()" type="button" class="btn btn-primary btn-lg">Save</button>
       </div>
       <h1>Ticket</h1>
-      <p style="text-align: right;height: 14px;padding-top: 4px">
-        <span style="align:center">{{controller.status}}</span>
-        <span style="color: red;align:center">{{controller.error}}</span>
-      </p>
-
     </div>
 
     <form class="form-horizontal" role="form">

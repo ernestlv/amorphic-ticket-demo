@@ -28,6 +28,7 @@ export class Project extends Remoteable(Persistable(Supertype)) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.created = new Date();
 	};
 
 	addNewTicket (title: string, description: string) {
@@ -47,6 +48,7 @@ export class Project extends Remoteable(Persistable(Supertype)) {
 			this.created = new Date();
 		}
 		*/
+		this.created = this.created || new Date();
 		this.creator = authenticatedPerson || this.creator;
 		return this.persistSave();
 	}

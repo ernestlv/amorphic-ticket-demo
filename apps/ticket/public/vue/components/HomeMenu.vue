@@ -42,7 +42,12 @@
         </li>
       </ul>
     </nav>
-
+    <div class="container">
+      <p style="text-align: right;height: 14px;padding-top: 50px">
+        <span style="align:center">{{controller.status}}</span>
+        <span style="color: red;align:center">{{controller.error}}</span>
+      </p>
+    </div>
     <!--<div class="container" id="container" style="margin-top: 50px">-->
       <!-- component matched by the route will render here -->
     <!--</div>-->

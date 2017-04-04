@@ -1,7 +1,7 @@
 import {Supertype, supertypeClass, property, remote} from 'amorphic';
 import {TicketItemComment} from './tsmodel/ticketItemComment';
 import {Ticket} from './tsmodel/ticket';
-import * as Q from 'Q';
+import * as Q from 'q';
 import * as _ from 'underscore';
 import {Person} from "./tsmodel/person";
 import {Project} from "./tsmodel/project";
@@ -160,6 +160,21 @@ export class Controller extends BaseController {
 
             }.bind(this));
     };
+
+    @remote()
+    removeTicket(ticket) {
+        if (ticket){
+            return ticket.remove()
+                .then(function(){
+                    let ix = _.indexOf(this.tickets, ticket);
+                    if (ix >= 0){
+                        this.tickets.splice(ix, 1);
+                    }
+                }.bind(this));
+        } else {
+            return Q();
+        }
+    }
 
     /*
      * -------  Project functions ----------------------------------------------------------------

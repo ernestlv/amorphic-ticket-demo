@@ -22,7 +22,7 @@
           <td><a @click="showTicket(ticket)">{{ticket.title || 'unnamed'}}</a></td>
           <td>{{ticket.created}}</td>
           <td>{{ticket.creator ? ticket.creator.getFullName() : 'unknown'}}</td>
-          <td><a @click="deleteTicket()">Delete</a></td>
+          <td><a @click="deleteTicket(ticket)">Delete</a></td>
         </tr>
         </tbody>
       </table>
@@ -72,19 +72,20 @@
 
     showTicket(ticket): void {
       console.log('Show Ticket =========>');
-//      this.controller.ticket = ticket;
+      this.controller.ticket = ticket;
       this.$router.push('/ticket');
     }
 
     addTicket(): void {
       console.log('Add Ticket =========>');
 //      this.controller.createNewTicket();
+      this.controller.ticket = null;
       this.$router.push('/ticket');
     }
 
-    deleteTicket(): void {
+    deleteTicket(ticket): void {
       console.log('Delete Ticket =========>');
-//      this.controller.deleteTicket();
+      this.controller.removeTicket(ticket);
     }
   }
 </script>

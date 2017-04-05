@@ -7,7 +7,7 @@ import App from './App';
 
 // import './styles/style.scss'
 const router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: routes
 });
 
@@ -15,9 +15,9 @@ Vue.use(VueRouter);
 Vue.use(VeeValidate);
 
 /* eslint-disable no-new */
-new Vue({
-    el: '#app',
+new App({
+    // el: '#app',
     router,
     store,
-    render: h => h(App)
-});
+    // render: h => h(App)
+}).$mount('#app');

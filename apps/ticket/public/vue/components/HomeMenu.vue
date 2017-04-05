@@ -3,7 +3,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <ul class="nav navbar-nav" v-if="!controller.loggedIn">
         <li>
-          <router-link to="#">Home</router-link>
+          <router-link to="">Home</router-link>
         </li>
         <li>
           <router-link to="/login">Login</router-link>
@@ -14,7 +14,7 @@
       </ul>
       <ul class="nav navbar-nav" v-if="controller.loggedIn">
         <li>
-          <router-link to="#">Home</router-link>
+          <router-link to="">Home</router-link>
         </li>
         <li>
           <router-link to="/tickets">Tickets</router-link>

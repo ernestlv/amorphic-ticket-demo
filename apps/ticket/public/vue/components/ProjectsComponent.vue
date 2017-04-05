@@ -13,7 +13,8 @@
         <tr>
           <th>Name</th>
           <th>Created</th>
-          <th>By</th>
+          <th>Creator</th>
+          <th>Owner</th>
           <th></th>
         </tr>
         </thead>
@@ -22,6 +23,7 @@
           <td><a @click="showProject(project)">{{project.name || 'unnamed'}}</a></td>
           <td>{{project.created}}</td>
           <td>{{project.creator ? project.creator.getFullName() : 'unknown'}}</td>
+          <td>{{project.owner ? project.owner.getFullName() : 'unknown'}}</td>
           <td><a @click="deleteProject(project)">Delete</a></td>
         </tr>
         </tbody>

@@ -9,6 +9,8 @@
     <meta name="title" content="Amorphic sample application">
     <title> Amorphic Ticket Demo </title>
 
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
     <!-- First include your library files -->
     <script src="modules/q/q.js?ver=0q.js?ver=0"></script>
     <script src="js/lib/underscore.js?ver=0"></script>
@@ -20,7 +22,7 @@
     <![endif]-->
     <script src="js/lib/jquery.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="//unpkg.com/vue"></script>
 
     <!-- Then include the amorphic files -->
     <script src="supertype/index.js?ver=0"></script>
@@ -37,11 +39,11 @@
 </head>
 
 <body style="visibility:hidden;">
-
+<div id="vue-app">
     <!--#include virtual="inc/mappers.html" -->
     <!--#include virtual="inc/messages.html" -->
 
-    <b:include url="menu.html"></b:include>
+    <vue-menu></vue-menu>
 
     <div class="container" id="container" style="margin-top: 50px">
 
@@ -75,9 +77,84 @@
         </b:if>
 
     </div>
-
+</div> <!--close #vue-app -->
     <!--#include virtual="inc/mocha.html" -->
     <script src="modules/amorphic-bindster/bindster-amorphic.js"></script>
-
+    <!-- Vue Templates -->
+    <script type="text/x-template" id="vue-menu-tpl">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <ul class="nav navbar-nav" v-show="!isLoggedIn">
+                <li><a href="#" @click.prevent="goHome">Home</a></li>
+                <li><a href="#" @click.prevent="goLogin">Login</a></li>
+                <li><a href="#" @click.prevent="goRegistration">Register</a></li>
+                <li><a href="#" @click.prevent="doTests">Tests</a></li>
+            </ul>
+            <ul class="nav navbar-nav" v-show="isLoggedIn">
+                <li><a href="#" @click.prevent="goHome">Home</a></li>
+                <li><a href="#" @click.prevent="goTickets">Tickets</a></li>
+                <li><a href="#" @click.prevent="goProjects">Projects</a></li>
+                <li><a href="#" @click.prevent="goPeople">People</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <span>{{userFirstName}}</span><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" @click.prevent="doLogout">Logout</a></li>
+                        <li><a href="#" @click.prevent="goChangeEmail">Change email</a></li>
+                        <li><a href="#" @click.prevent="goPassword">Change Password</a></li>
+                        <li><a href="#" @click.prevent="doDeleteAll">Clear Database</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </script>
+    <!-- Vue Components -->
+    <script>
+        Vue.component('VueMenu', {
+            template: '#vue-menu-tpl',
+            computed: {
+                isLoggedIn: function(){
+                    return controller.isLoggedIn();
+                },
+                userFirstName: function(){
+                    return controller.loggedInPerson.firstName;
+                }
+            },
+            methods: {
+                goHome: function(e){
+                    controller.route.public.home();
+                },
+                goLogin: function(e){
+                    controller.route.public.login();
+                },
+                goRegistration: function(e){
+                    controller.route.public.registration();
+                },
+                goTickets: function(e){
+                    controller.route.private.tickets();
+                },
+                goProjects: function(e){
+                    controller.route.private.projects();
+                },
+                goPeople: function(e){
+                    controller.route.private.people();
+                },
+                goChangeEmail: function(e){
+                    controller.route.public.change_email();
+                },
+                goPassword: function(e){
+                    controller.route.public.change_password();
+                },
+                doTests: function(e){
+                    controller.runTests();
+                },
+                doLogout: function(e){
+                    controller.logout();
+                },
+                doDeleteAll: function(e){
+                    controller.deleteAll();
+                }
+            }
+        });
+        var app = new Vue({ el: '#vue-app' });
+    </script>
 </body>
 </html>

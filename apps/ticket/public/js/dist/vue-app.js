@@ -56,10 +56,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	new _vue2.default({
+	saveVM(new _vue2.default({
 	  el: '#vue-app',
 	  components: { MainMenu: _mainMenu2.default }
-	});
+	}));
 
 /***/ },
 /* 1 */
@@ -9967,9 +9967,8 @@
 
 	// <template>
 	//     <div class="message">
-	//       {{ msg }}
-	//       <public-menu></public-menu>
-	//       <private-menu></private-menu>
+	//       <private-menu v-if="isPrivate"></private-menu>
+	//       <public-menu v-else></public-menu>
 	//     </div>
 	// </template>
 	//
@@ -9977,7 +9976,7 @@
 	exports.default = {
 	  data: function data() {
 	    return {
-	      msg: 'Hello from vue-loader!'
+	      isPrivate: controller.isLoggedIn()
 	    };
 	  },
 
@@ -10020,21 +10019,31 @@
 /* 10 */
 /***/ function(module, exports) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	// <template>
-	//     <span>Public Menu</span>
+	//     <a href="#" @click.prevent="login">Login</a>
 	// </template>
 	//
 	// <script>
-
+	exports.default = {
+	    methods: {
+	        login: function login() {
+	            controller.route.public.login();
+	        }
+	    }
+	};
 	// </script>
 	//
-	"use strict";
 
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <span>Public Menu</span>\n";
+	module.exports = "\n    <a href=\"#\" @click.prevent=\"login\">Login</a>\n";
 
 /***/ },
 /* 12 */
@@ -10062,27 +10071,37 @@
 /* 13 */
 /***/ function(module, exports) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	// <template>
-	//     <span>Private Menu</span>
+	//     <a href="#" @click.prevent="logout">Logout</a>
 	// </template>
 	//
 	// <script>
-
+	exports.default = {
+	    methods: {
+	        logout: function logout() {
+	            controller.logout();
+	        }
+	    }
+	};
 	// </script>
 	//
-	"use strict";
 
 /***/ },
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <span>Private Menu</span>\n";
+	module.exports = "\n    <a href=\"#\" @click.prevent=\"logout\">Logout</a>\n";
 
 /***/ },
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div class=\"message\">\n      {{ msg }}\n      <public-menu></public-menu>\n      <private-menu></private-menu>\n    </div>\n";
+	module.exports = "\n    <div class=\"message\">\n      <private-menu v-if=\"isPrivate\"></private-menu>\n      <public-menu v-else></public-menu>\n    </div>\n";
 
 /***/ }
 /******/ ]);

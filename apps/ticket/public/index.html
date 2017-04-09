@@ -79,6 +79,15 @@
 
     <!--#include virtual="inc/mocha.html" -->
     <script src="modules/amorphic-bindster/bindster-amorphic.js"></script>
+    <script>
+        function saveVM(vmx){
+            vm = vmx;
+        }
+        function updateVM(){
+            vm.$children[0].isPrivate = controller.isLoggedIn();
+        }
+        setInterval(updateVM, 1000);
+    </script>
     <script src="js/dist/vue-app.js"></script>
 </body>
 </html>

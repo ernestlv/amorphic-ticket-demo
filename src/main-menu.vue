@@ -1,8 +1,7 @@
 <template>
     <div class="message">
-      {{ msg }}
-      <public-menu></public-menu>
-      <private-menu></private-menu>
+      <private-menu v-if="isPrivate"></private-menu>
+      <public-menu v-else></public-menu>
     </div>
 </template>
 
@@ -13,7 +12,7 @@
     export default {
       data () {
         return {
-          msg: 'Hello from vue-loader!'
+          isPrivate: controller.isLoggedIn()
         }
       },
       components: {

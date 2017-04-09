@@ -50,15 +50,15 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _app = __webpack_require__(3);
+	var _mainMenu = __webpack_require__(3);
 
-	var _app2 = _interopRequireDefault(_app);
+	var _mainMenu2 = _interopRequireDefault(_mainMenu);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	new _vue2.default({
 	  el: '#vue-app',
-	  components: { App: _app2.default }
+	  components: { MainMenu: _mainMenu2.default }
 	});
 
 /***/ },
@@ -9581,7 +9581,7 @@
 	var __vue_script__, __vue_template__
 	__webpack_require__(4)
 	__vue_script__ = __webpack_require__(8)
-	__vue_template__ = __webpack_require__(9)
+	__vue_template__ = __webpack_require__(15)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -9589,7 +9589,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/eleyva/gitlab/amorphic-ticket-demo/src/app.vue"
+	  var id = "/Users/eleyva/gitlab/amorphic-ticket-demo/src/main-menu.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -9613,8 +9613,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=_v-55e86962&file=app.vue!../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=_v-55e86962&file=app.vue!../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue");
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=_v-26425f18&file=main-menu.vue!../node_modules/vue-loader/lib/selector.js?type=style&index=0!./main-menu.vue", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=_v-26425f18&file=main-menu.vue!../node_modules/vue-loader/lib/selector.js?type=style&index=0!./main-menu.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9947,15 +9947,30 @@
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _publicMenu = __webpack_require__(9);
+
+	var _publicMenu2 = _interopRequireDefault(_publicMenu);
+
+	var _privateMenu = __webpack_require__(12);
+
+	var _privateMenu2 = _interopRequireDefault(_privateMenu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	// <template>
-	//     <div class="message">{{ msg }}</div>
+	//     <div class="message">
+	//       {{ msg }}
+	//       <public-menu></public-menu>
+	//       <private-menu></private-menu>
+	//     </div>
 	// </template>
 	//
 	// <script>
@@ -9964,6 +9979,11 @@
 	    return {
 	      msg: 'Hello from vue-loader!'
 	    };
+	  },
+
+	  components: {
+	    PublicMenu: _publicMenu2.default,
+	    PrivateMenu: _privateMenu2.default
 	  }
 	};
 	// </script>
@@ -9976,9 +9996,93 @@
 
 /***/ },
 /* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(10)
+	__vue_template__ = __webpack_require__(11)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/eleyva/gitlab/amorphic-ticket-demo/src/public-menu.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div class=\"message\">{{ msg }}</div>\n";
+	// <template>
+	//     <span>Public Menu</span>
+	// </template>
+	//
+	// <script>
+
+	// </script>
+	//
+	"use strict";
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <span>Public Menu</span>\n";
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(13)
+	__vue_template__ = __webpack_require__(14)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/eleyva/gitlab/amorphic-ticket-demo/src/private-menu.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	// <template>
+	//     <span>Private Menu</span>
+	// </template>
+	//
+	// <script>
+
+	// </script>
+	//
+	"use strict";
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <span>Private Menu</span>\n";
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <div class=\"message\">\n      {{ msg }}\n      <public-menu></public-menu>\n      <private-menu></private-menu>\n    </div>\n";
 
 /***/ }
 /******/ ]);

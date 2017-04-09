@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import App from './app.vue'
+import MainMenu from './main-menu.vue'
 
 new Vue({
   el: '#vue-app',
-  components: { App }
+  components: { MainMenu }
 })

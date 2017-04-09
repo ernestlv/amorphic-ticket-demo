@@ -40,7 +40,9 @@
 <body style="visibility:hidden;">
     <!--#include virtual="inc/mappers.html" -->
     <!--#include virtual="inc/messages.html" -->
-
+    <div id="vue-app">
+        <main-menu></main-menu>
+    </div> <!--close #vue-app -->
 
     <div class="container" id="container" style="margin-top: 50px">
 
@@ -74,9 +76,7 @@
         </b:if>
 
     </div>
-<div id="vue-app">
-<app></app>
-</div> <!--close #vue-app -->
+
     <!--#include virtual="inc/mocha.html" -->
     <script src="modules/amorphic-bindster/bindster-amorphic.js"></script>
     <script src="js/dist/vue-app.js"></script>

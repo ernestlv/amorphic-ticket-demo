@@ -13,7 +13,8 @@
     "amorphic-mandrill": "x",
     "amorphic-userman": "x",
     "q": "0.9.x",
-    "vue": "^2.2.6"
+    "vue": "^2.2.6",
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "chai": "1.x",

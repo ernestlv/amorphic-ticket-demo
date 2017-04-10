@@ -22,6 +22,7 @@
     <![endif]-->
     <script src="js/lib/jquery.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
 
     <!-- Then include the amorphic files -->
     <script src="supertype/index.js?ver=0"></script>
@@ -80,14 +81,12 @@
     <!--#include virtual="inc/mocha.html" -->
     <script src="modules/amorphic-bindster/bindster-amorphic.js"></script>
     <script>
-        function saveVM(vmx){
-            vm = vmx;
+        function saveVM(vm, store){
+            vmx = vm;
+            storex = store;
         }
-        function updateVM(){
-            vm.$children[0].isPrivate = controller.isLoggedIn();
-        }
-        setInterval(updateVM, 1000);
     </script>
+    <!-- webpack compiled bundle -->
     <script src="js/dist/vue-app.js"></script>
 </body>
 </html>
